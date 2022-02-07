@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const user = require('./user');
 const Schema = mongoose.Schema;
-
+// the load type methode will load the currenccy
 require('mongoose-currency').loadType(mongoose);
 const Currency = mongoose.Types.Currency;
 
@@ -16,8 +17,8 @@ const commentSchema = new Schema({
         required: true
     },
     author: {
-        type: String,
-        required: true
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     }
 }, {
     timestamps: true
